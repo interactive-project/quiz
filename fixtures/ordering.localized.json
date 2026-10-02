@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q8",
+      "kind": "ordering",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "es",
+          "translations": {
+            "en": {
+              "text": "Localized ordering"
+            },
+            "es": {
+              "text": "Pregunta: Localized ordering"
+            },
+            "ar": {
+              "text": "سؤال Localized ordering"
+            }
+          }
+        }
+      },
+      "items": [
+        {
+          "id": "a",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "b",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "2"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "solutions": {
+    "q8": {
+      "kind": "ordering",
+      "order": [
+        "a",
+        "b"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q3",
+      "kind": "true-false",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "es",
+          "translations": {
+            "en": {
+              "text": "Localized true-false"
+            },
+            "es": {
+              "text": "Pregunta: Localized true-false"
+            },
+            "ar": {
+              "text": "سؤال Localized true-false"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "solutions": {
+    "q3": {
+      "kind": "true-false",
+      "answer": true
+    }
+  }
+}

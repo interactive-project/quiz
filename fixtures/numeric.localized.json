@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q4",
+      "kind": "numeric",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "es",
+          "translations": {
+            "en": {
+              "text": "Localized numeric"
+            },
+            "es": {
+              "text": "Pregunta: Localized numeric"
+            },
+            "ar": {
+              "text": "سؤال Localized numeric"
+            }
+          }
+        }
+      },
+      "unit": "m"
+    }
+  ],
+  "solutions": {
+    "q4": {
+      "kind": "numeric",
+      "value": 2,
+      "tolerance": {
+        "absolute": 0.01,
+        "relative": 0.001
+      }
+    }
+  }
+}

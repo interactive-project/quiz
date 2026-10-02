@@ -1,0 +1,17 @@
+# Quiz models v1
+
+AuthorQuiz is {schemaVersion:1.0.0,questions,solutions}; LearnerQuiz contains only schemaVersion and questions. Solutions are a separate map keyed by question ID. Never deliver the author document or solution module to a learner. toLearnerQuiz validates a copied author input and projects only learner fields. It cannot remove answer information deliberately written into prompts, labels or asset URLs: authoring and delivery policy must inspect those.
+
+Question IDs are unique across a quiz. Option/item/blank IDs are unique within a question. Matching left and right IDs use distinct namespaces within that question. Identifiers begin with an ASCII letter and contain at most 64 ASCII letters/digits/dot/underscore/hyphen. Quizzes contain 1–100 questions; option/item lists 2–100; blanks 1–50. All public objects are closed.
+
+Prompts, choice labels, matching labels, ordering labels and blank prompts are ContentNode values, validated structurally and semantically. Unsupported HTML/vendor nodes are rejected. Localization uses ContentNode LocalizedText; it does not change IDs or grading keys. Fixtures include en/es/ar prompts for all eight kinds.
+
+Single-choice has one existing answer ID. Multiple-choice has a nonempty unique subset of existing IDs. True-false answers are booleans. Ordering solutions and submitted responses are complete permutations of item IDs. Matching is one-to-one: every left item has exactly one unique existing right solution; surplus right distractors are allowed. Learner matching responses may be partial but cannot reuse either endpoint. Fill-blank solutions cover every declared blank; learner responses may be partial with no foreign blank IDs. Unanswered questions are represented by the absence of a response; clearing an answer is a domain action in the later engine.
+
+Numeric units are exact declared strings (1 means dimensionless). Response units must match; implicit conversions are unsupported. Solutions contain a finite value and nonnegative absolute/relative tolerances. The intended comparison uses absolute error <= max(absolute tolerance, relative tolerance * abs(expected)); quiz#2 implements grading. Nonfinite/unsafe JSON numbers are rejected before schema validation.
+
+Text answers use question-declared exact, nfc-trim or nfc-trim-lower normalization. The latter performs Unicode NFC, ECMAScript trim and locale-independent toLowerCase; it is not linguistic case folding or accent removal. Internal whitespace is preserved. Blank normalization is declared per blank. Accepted text solutions must be nonempty; alternate accepted texts remain author-only.
+
+Responses carry questionId, kind and a typed answer. validateQuizResponse requires the corresponding validated learner model and rejects foreign IDs, wrong units, duplicate selections, invalid cardinality and incomplete ordering. Schema validation alone cannot establish these relations; use the semantic validators at public boundaries.
+
+The v1 schema is Quiz-owned and composed with the unchanged ContentNode 1.0.0 and Protocol 1.0.0 schemas. This issue does not publish packages or implement a UI, grading state machine, network evaluator or randomized order. Git-pinned dependencies provide reproducible CI against merged implementations. All 24 author fixtures and eight response fixtures are listed/tested in the conformance suite.

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q6",
+      "kind": "fill-blank",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "en",
+          "translations": {
+            "en": {
+              "text": "Complete each blank"
+            }
+          }
+        }
+      },
+      "blanks": [
+        {
+          "id": "b1",
+          "prompt": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "Capital"
+                }
+              }
+            }
+          },
+          "normalization": "nfc-trim-lower"
+        }
+      ]
+    }
+  ],
+  "solutions": {
+    "q6": {
+      "kind": "fill-blank",
+      "accepted": {
+        "missing": [
+          "Paris"
+        ]
+      }
+    }
+  }
+}

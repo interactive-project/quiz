@@ -1,0 +1,14 @@
+{
+  "questionId": "q7",
+  "kind": "matching",
+  "answer": [
+    {
+      "left": "l1",
+      "right": "r1"
+    },
+    {
+      "left": "l2",
+      "right": "r2"
+    }
+  ]
+}
