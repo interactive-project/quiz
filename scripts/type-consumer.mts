@@ -13,3 +13,7 @@ const local=createLocalEvaluator({author,validateAuthor:validateAuthorQuiz,valid
 local.evaluate(frame);
 const remote=createAssessmentEvaluator({learner,validateLearner:validateLearnerQuiz,validateResponse:validateQuizResponse,validateResult,getCurrent:()=>frame,remote:f=>local.evaluate(f)});
 remote.evaluate(frame);remote.dispose();
+
+import {createQuizEngine,type QuizEngineOptions} from '../engine/index.js';
+declare const engineOptions:QuizEngineOptions;
+createQuizEngine(engineOptions).then(engine=>{engine.dispatch({protocolVersion:'1.0.0',actionVersion:'1.0.0',id:'id',activityId:'activity',sessionId:'session',attemptId:'attempt',sequence:0,type:'interactive-project/quiz.start',payload:{}});engine.serialize();engine.getContext();});

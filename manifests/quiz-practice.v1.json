@@ -1,0 +1,44 @@
+{
+  "manifestVersion": "1.0.0",
+  "id": "interactive-project/quiz",
+  "pluginVersion": "0.1.0",
+  "type": "interactive-project/quiz",
+  "protocolVersions": [
+    "1.0.0"
+  ],
+  "entries": [
+    {
+      "type": "interactive-project/quiz",
+      "activitySchemaVersion": "1.0.0",
+      "schemaId": "https://github.com/interactive-project/quiz/blob/main/schemas/quiz.v1.schema.json#/$defs/learner",
+      "capabilities": {
+        "interactive": {
+          "supported": true
+        },
+        "evaluable": {
+          "supported": true
+        },
+        "collaborative": {
+          "supported": false
+        },
+        "offline": {
+          "supported": true
+        },
+        "deterministic": {
+          "supported": true
+        },
+        "resumable": {
+          "supported": true
+        },
+        "aiGeneratable": {
+          "supported": true
+        }
+      },
+      "requiredCapabilities": [
+        "interactive",
+        "evaluable"
+      ],
+      "requiredPermissions": []
+    }
+  ]
+}
