@@ -3,6 +3,7 @@ import addFormats from 'ajv-formats';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {copyGeneratedJson} from '@interactive-project/protocol/generation/json';
+import {normalizeAnswerText} from '../index.js';
 import {validateContent} from '@interactive-project/content-node/validation';
 const require=createRequire(import.meta.url),schema=JSON.parse(readFileSync(new URL('../schemas/quiz.v1.schema.json',import.meta.url)));
 const ajv=new Ajv2020({strict:true,allErrors:true,ownProperties:true,allowUnionTypes:true});addFormats(ajv);
@@ -25,6 +26,8 @@ function validate(input,author){
   if(q.kind==='multiple-choice'&&s.answer.some(id=>!choicesIds.has(id)))fail('quiz.solution',sp+'/answer');
   if(q.kind==='ordering'&&(s.order.length!==choicesIds.size||s.order.some(id=>!choicesIds.has(id))))fail('quiz.solution',sp+'/order');
   if(q.kind==='fill-blank'&&(Object.keys(s.accepted).length!==choicesIds.size||Object.keys(s.accepted).some(id=>!choicesIds.has(id))))fail('quiz.solution',sp+'/accepted');
+  if(q.kind==='short-answer'){const keys=s.accepted.map(text=>normalizeAnswerText(text,q.normalization));if(keys.some(text=>text.length===0)||new Set(keys).size!==keys.length)fail('quiz.solution',sp+'/accepted');}
+  if(q.kind==='fill-blank'){for(const blank of q.blanks){const accepted=s.accepted[blank.id];if(accepted){const keys=accepted.map(text=>normalizeAnswerText(text,blank.normalization));if(keys.some(text=>text.length===0)||new Set(keys).size!==keys.length)fail('quiz.solution',sp+'/accepted/'+blank.id);}}}
   if(q.kind==='matching'&&(s.pairs.length!==left.size||new Set(s.pairs.map(p=>p.left)).size!==s.pairs.length||new Set(s.pairs.map(p=>p.right)).size!==s.pairs.length||s.pairs.some(p=>!left.has(p.left)||!right.has(p.right))))fail('quiz.solution',sp+'/pairs');
  }
  if(author&&Object.keys(quiz.solutions).some(id=>!seen.has(id)))fail('quiz.solution','/solutions');

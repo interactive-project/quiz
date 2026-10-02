@@ -18,6 +18,7 @@ assert.equal(kinds.size,8);
 const quiz=read('fixtures/single-choice.valid.json'),duplicate=structuredClone(quiz);duplicate.questions.push(duplicate.questions[0]);assert(!validateAuthorQuiz(duplicate).valid);
 const empty=structuredClone(quiz);empty.questions[0].options=[];assert(!validateAuthorQuiz(empty).valid);
 const extra=structuredClone(quiz);extra.solutions.unknown={kind:'true-false',answer:true};assert(!validateAuthorQuiz(extra).valid);
+const textKey=read('fixtures/short-answer.valid.json');textKey.solutions.q5.accepted=['   '];assert(!validateAuthorQuiz(textKey).valid);textKey.solutions.q5.accepted=['Paris',' PARIS '];assert(!validateAuthorQuiz(textKey).valid);
 const unsafe=structuredClone(quiz);unsafe.questions[0].prompt.value.translations.en.text=()=>{};assert(!validateAuthorQuiz(unsafe).valid);
 for(const [kind,response]of [['multiple-choice',{questionId:'q2',kind:'multiple-choice',answer:['a','a']}],['numeric',{questionId:'q4',kind:'numeric',answer:{value:2,unit:'cm'}}],['fill-blank',{questionId:'q6',kind:'fill-blank',answer:{unknown:'x'}}],['ordering',{questionId:'q8',kind:'ordering',answer:['a']}],['matching',{questionId:'q7',kind:'matching',answer:[{left:'l1',right:'r1'},{left:'l2',right:'r1'}]}]]){
  const author=read('fixtures/'+kind+'.valid.json');assert(!validateQuizResponse(response,toLearnerQuiz(author,validateAuthorQuiz)).valid,kind);

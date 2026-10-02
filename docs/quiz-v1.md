@@ -10,7 +10,7 @@ Single-choice has one existing answer ID. Multiple-choice has a nonempty unique 
 
 Numeric units are exact declared strings (1 means dimensionless). Response units must match; implicit conversions are unsupported. Solutions contain a finite value and nonnegative absolute/relative tolerances. The intended comparison uses absolute error <= max(absolute tolerance, relative tolerance * abs(expected)); quiz#2 implements grading. Nonfinite/unsafe JSON numbers are rejected before schema validation.
 
-Text answers use question-declared exact, nfc-trim or nfc-trim-lower normalization. The latter performs Unicode NFC, ECMAScript trim and locale-independent toLowerCase; it is not linguistic case folding or accent removal. Internal whitespace is preserved. Blank normalization is declared per blank. Accepted text solutions must be nonempty; alternate accepted texts remain author-only.
+Text answers use question-declared exact, nfc-trim or nfc-trim-lower normalization. The latter performs Unicode NFC, ECMAScript trim and locale-independent toLowerCase; it is not linguistic case folding or accent removal. Internal whitespace is preserved. Blank normalization is declared per blank. Accepted text solutions must remain nonempty and distinct after their declared normalization; alternate accepted texts remain author-only.
 
 Responses carry questionId, kind and a typed answer. validateQuizResponse requires the corresponding validated learner model and rejects foreign IDs, wrong units, duplicate selections, invalid cardinality and incomplete ordering. Schema validation alone cannot establish these relations; use the semantic validators at public boundaries.
 
