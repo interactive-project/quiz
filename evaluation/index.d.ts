@@ -1,0 +1,7 @@
+import type {AuthorQuiz,LearnerQuiz,Response} from '../types/quiz.js';
+import type {Result,CancellationSignal,MaybePromise} from '@interactive-project/protocol/interoperability';
+export interface EvaluationFrame{activityId:string;sessionId:string;attemptId?:string;generation?:string;revision:number;responses:Response[]}
+export interface ScoringPolicy{scoringVersion?:'1.0.0';weights?:Record<string,number>;partialCredit?:boolean;penalty?:number}
+export declare function createLocalEvaluator(options:{author:AuthorQuiz;scoring?:ScoringPolicy;validateAuthor(input:unknown):{valid:boolean};validateResponse(input:unknown,learner:unknown):{valid:boolean}}):Readonly<{evaluate(frame:EvaluationFrame):Result}>;
+export interface AssessmentStatus{phase:'idle'|'pending'|'completed'|'failed'|'disposed';result?:Result}
+export declare function createAssessmentEvaluator(options:{learner:unknown;validateLearner(input:unknown):{valid:boolean};validateResponse(input:unknown,learner:unknown):{valid:boolean};validateResult(input:unknown,expected:{activityId:string;sessionId:string;attemptId?:string}):{valid:boolean};getCurrent():Omit<EvaluationFrame,'responses'>;remote(frame:EvaluationFrame,options:{signal:CancellationSignal}):MaybePromise<Result>;timeoutMs?:number}):Readonly<{evaluate(frame:EvaluationFrame,options?:{signal?:CancellationSignal}):Promise<Result>;cancel():void;dispose():void;getStatus():Readonly<AssessmentStatus>}>;

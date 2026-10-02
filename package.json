@@ -12,7 +12,8 @@
     "docs",
     "fixtures",
     "README.md",
-    "index.d.ts"
+    "index.d.ts",
+    "evaluation"
   ],
   "exports": {
     ".": {
@@ -25,10 +26,15 @@
       "import": "./validation/index.js",
       "default": "./validation/index.js"
     },
-    "./schemas/quiz.v1.schema.json": "./schemas/quiz.v1.schema.json"
+    "./schemas/quiz.v1.schema.json": "./schemas/quiz.v1.schema.json",
+    "./evaluation": {
+      "types": "./evaluation/index.d.ts",
+      "import": "./evaluation/index.js",
+      "default": "./evaluation/index.js"
+    }
   },
   "scripts": {
-    "test": "node scripts/check-conformance.mjs"
+    "test": "node scripts/check-conformance.mjs && node scripts/check-evaluation.mjs"
   },
   "peerDependencies": {
     "@interactive-project/protocol": "0.1.0",
