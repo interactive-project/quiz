@@ -1,0 +1,122 @@
+[
+  {
+    "path": "fixtures/single-choice.valid.json",
+    "valid": true,
+    "kind": "single-choice"
+  },
+  {
+    "path": "fixtures/single-choice.invalid.json",
+    "valid": false,
+    "kind": "single-choice"
+  },
+  {
+    "path": "fixtures/single-choice.localized.json",
+    "valid": true,
+    "kind": "single-choice"
+  },
+  {
+    "path": "fixtures/multiple-choice.valid.json",
+    "valid": true,
+    "kind": "multiple-choice"
+  },
+  {
+    "path": "fixtures/multiple-choice.invalid.json",
+    "valid": false,
+    "kind": "multiple-choice"
+  },
+  {
+    "path": "fixtures/multiple-choice.localized.json",
+    "valid": true,
+    "kind": "multiple-choice"
+  },
+  {
+    "path": "fixtures/true-false.valid.json",
+    "valid": true,
+    "kind": "true-false"
+  },
+  {
+    "path": "fixtures/true-false.invalid.json",
+    "valid": false,
+    "kind": "true-false"
+  },
+  {
+    "path": "fixtures/true-false.localized.json",
+    "valid": true,
+    "kind": "true-false"
+  },
+  {
+    "path": "fixtures/numeric.valid.json",
+    "valid": true,
+    "kind": "numeric"
+  },
+  {
+    "path": "fixtures/numeric.invalid.json",
+    "valid": false,
+    "kind": "numeric"
+  },
+  {
+    "path": "fixtures/numeric.localized.json",
+    "valid": true,
+    "kind": "numeric"
+  },
+  {
+    "path": "fixtures/short-answer.valid.json",
+    "valid": true,
+    "kind": "short-answer"
+  },
+  {
+    "path": "fixtures/short-answer.invalid.json",
+    "valid": false,
+    "kind": "short-answer"
+  },
+  {
+    "path": "fixtures/short-answer.localized.json",
+    "valid": true,
+    "kind": "short-answer"
+  },
+  {
+    "path": "fixtures/fill-blank.valid.json",
+    "valid": true,
+    "kind": "fill-blank"
+  },
+  {
+    "path": "fixtures/fill-blank.invalid.json",
+    "valid": false,
+    "kind": "fill-blank"
+  },
+  {
+    "path": "fixtures/fill-blank.localized.json",
+    "valid": true,
+    "kind": "fill-blank"
+  },
+  {
+    "path": "fixtures/matching.valid.json",
+    "valid": true,
+    "kind": "matching"
+  },
+  {
+    "path": "fixtures/matching.invalid.json",
+    "valid": false,
+    "kind": "matching"
+  },
+  {
+    "path": "fixtures/matching.localized.json",
+    "valid": true,
+    "kind": "matching"
+  },
+  {
+    "path": "fixtures/ordering.valid.json",
+    "valid": true,
+    "kind": "ordering"
+  },
+  {
+    "path": "fixtures/ordering.invalid.json",
+    "valid": false,
+    "kind": "ordering"
+  },
+  {
+    "path": "fixtures/ordering.localized.json",
+    "valid": true,
+    "kind": "ordering"
+  }
+]

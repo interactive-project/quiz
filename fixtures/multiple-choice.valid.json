@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q2",
+      "kind": "multiple-choice",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "en",
+          "translations": {
+            "en": {
+              "text": "Select A and B"
+            }
+          }
+        }
+      },
+      "options": [
+        {
+          "id": "a",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "A"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "b",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "B"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "c",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "C"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "solutions": {
+    "q2": {
+      "kind": "multiple-choice",
+      "answer": [
+        "a",
+        "b"
+      ]
+    }
+  }
+}

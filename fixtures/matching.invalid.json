@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q7",
+      "kind": "matching",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "en",
+          "translations": {
+            "en": {
+              "text": "Match each item"
+            }
+          }
+        }
+      },
+      "cardinality": "one-to-one",
+      "left": [
+        {
+          "id": "l1",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "One"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "l2",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "Two"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "right": [
+        {
+          "id": "r1",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "r2",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": {
+                  "text": "2"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "solutions": {
+    "q7": {
+      "kind": "matching",
+      "pairs": [
+        {
+          "left": "l1",
+          "right": "r1"
+        },
+        {
+          "left": "l2",
+          "right": "r1"
+        }
+      ]
+    }
+  }
+}

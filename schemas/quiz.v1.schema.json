@@ -1,0 +1,847 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/interactive-project/quiz/blob/main/schemas/quiz.v1.schema.json",
+  "title": "Quiz author, learner and response models v1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/author"
+    },
+    {
+      "$ref": "#/$defs/learner"
+    },
+    {
+      "$ref": "#/$defs/response"
+    }
+  ],
+  "$defs": {
+    "question": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "single-choice"
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "content": {
+                    "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+                  }
+                },
+                "required": [
+                  "id",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 100
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind",
+            "options"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "multiple-choice"
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "content": {
+                    "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+                  }
+                },
+                "required": [
+                  "id",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 100
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind",
+            "options"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "true-false"
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "numeric"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "short-answer"
+            },
+            "normalization": {
+              "enum": [
+                "exact",
+                "nfc-trim",
+                "nfc-trim-lower"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind",
+            "normalization"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "fill-blank"
+            },
+            "blanks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "prompt": {
+                    "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+                  },
+                  "normalization": {
+                    "enum": [
+                      "exact",
+                      "nfc-trim",
+                      "nfc-trim-lower"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "prompt",
+                  "normalization"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1,
+              "maxItems": 50
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind",
+            "blanks"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "matching"
+            },
+            "left": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "content": {
+                    "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+                  }
+                },
+                "required": [
+                  "id",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 100
+            },
+            "right": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "content": {
+                    "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+                  }
+                },
+                "required": [
+                  "id",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 100
+            },
+            "cardinality": {
+              "const": "one-to-one"
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind",
+            "left",
+            "right",
+            "cardinality"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "prompt": {
+              "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+            },
+            "kind": {
+              "const": "ordering"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "content": {
+                    "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+                  }
+                },
+                "required": [
+                  "id",
+                  "content"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "maxItems": 100
+            }
+          },
+          "required": [
+            "id",
+            "prompt",
+            "kind",
+            "items"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/question"
+          },
+          "minItems": 1,
+          "maxItems": 100
+        },
+        "solutions": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 100,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+          },
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "single-choice"
+                  },
+                  "answer": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "answer"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "multiple-choice"
+                  },
+                  "answer": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                    },
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "uniqueItems": true
+                  }
+                },
+                "required": [
+                  "kind",
+                  "answer"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "true-false"
+                  },
+                  "answer": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "answer"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "numeric"
+                  },
+                  "value": {
+                    "type": "number"
+                  },
+                  "tolerance": {
+                    "type": "object",
+                    "properties": {
+                      "absolute": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "relative": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "absolute",
+                      "relative"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "kind",
+                  "value",
+                  "tolerance"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "short-answer"
+                  },
+                  "accepted": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 4000
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "kind",
+                  "accepted"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "fill-blank"
+                  },
+                  "accepted": {
+                    "type": "object",
+                    "minProperties": 1,
+                    "maxProperties": 50,
+                    "propertyNames": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                    },
+                    "additionalProperties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 4000
+                      },
+                      "minItems": 1,
+                      "maxItems": 100
+                    }
+                  }
+                },
+                "required": [
+                  "kind",
+                  "accepted"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "matching"
+                  },
+                  "pairs": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "left": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                        },
+                        "right": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                        }
+                      },
+                      "required": [
+                        "left",
+                        "right"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                  }
+                },
+                "required": [
+                  "kind",
+                  "pairs"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "ordering"
+                  },
+                  "order": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                    },
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "uniqueItems": true
+                  }
+                },
+                "required": [
+                  "kind",
+                  "order"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "questions",
+        "solutions"
+      ],
+      "additionalProperties": false
+    },
+    "learner": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/question"
+          },
+          "minItems": 1,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "questions"
+      ],
+      "additionalProperties": false
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "single-choice"
+            },
+            "answer": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "multiple-choice"
+            },
+            "answer": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "true-false"
+            },
+            "answer": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "numeric"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "short-answer"
+            },
+            "answer": {
+              "type": "string",
+              "maxLength": 4000
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "fill-blank"
+            },
+            "answer": {
+              "type": "object",
+              "maxProperties": 50,
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "maxLength": 4000
+              }
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "matching"
+            },
+            "answer": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "left": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "right": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  }
+                },
+                "required": [
+                  "left",
+                  "right"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0,
+              "maxItems": 100
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+            },
+            "kind": {
+              "const": "ordering"
+            },
+            "answer": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+              },
+              "minItems": 1,
+              "maxItems": 100,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "questionId",
+            "kind",
+            "answer"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@interactive-project/quiz",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "Headless eight-kind quiz contracts and author/learner separation",
+  "files": [
+    "index.js",
+    "types",
+    "validation",
+    "schemas",
+    "docs",
+    "fixtures",
+    "README.md",
+    "index.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "default": "./index.js"
+    },
+    "./validation": {
+      "types": "./validation/index.d.ts",
+      "import": "./validation/index.js",
+      "default": "./validation/index.js"
+    },
+    "./schemas/quiz.v1.schema.json": "./schemas/quiz.v1.schema.json"
+  },
+  "scripts": {
+    "test": "node scripts/check-conformance.mjs"
+  },
+  "peerDependencies": {
+    "@interactive-project/protocol": "0.1.0",
+    "@interactive-project/content-node": "0.1.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "peerDependenciesMeta": {
+    "ajv": {
+      "optional": true
+    },
+    "ajv-formats": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@interactive-project/protocol": "git+https://github.com/interactive-project/protocol.git#0280e004ba863621a257b96819f34295c8db0ea7",
+    "@interactive-project/content-node": "git+https://github.com/interactive-project/content-node.git#276f7970a703035eab6130784046584f51df0534",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q3",
+      "kind": "true-false",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "en",
+          "translations": {
+            "en": {
+              "text": "Two is even"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "solutions": {
+    "q3": {
+      "kind": "true-false",
+      "answer": "true"
+    }
+  }
+}

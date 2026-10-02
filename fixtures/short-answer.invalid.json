@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q5",
+      "kind": "short-answer",
+      "prompt": {
+        "kind": "html",
+        "schemaVersion": "1.0.0",
+        "source": "unsafe"
+      },
+      "normalization": "nfc-trim-lower"
+    }
+  ],
+  "solutions": {
+    "q5": {
+      "kind": "short-answer",
+      "accepted": [
+        "Paris"
+      ]
+    }
+  }
+}

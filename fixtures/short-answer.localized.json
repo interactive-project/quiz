@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q5",
+      "kind": "short-answer",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "es",
+          "translations": {
+            "en": {
+              "text": "Localized short-answer"
+            },
+            "es": {
+              "text": "Pregunta: Localized short-answer"
+            },
+            "ar": {
+              "text": "سؤال Localized short-answer"
+            }
+          }
+        }
+      },
+      "normalization": "nfc-trim-lower"
+    }
+  ],
+  "solutions": {
+    "q5": {
+      "kind": "short-answer",
+      "accepted": [
+        "Paris"
+      ]
+    }
+  }
+}
