@@ -45,6 +45,36 @@ const response=read('fixtures/single-choice.response.json');
  assert.equal(restored.events.at(-1).type,'interactive-project/activity.resumed');f.engine.dispose();restored.engine.dispose();
 }
 {
+ const kinds=['single-choice','multiple-choice','true-false','numeric','short-answer','fill-blank','matching','ordering'];
+ for(let index=0;index<kinds.length;index++){
+  const kind=kinds[index],a=read(`fixtures/${kind}.valid.json`),answer=read(`fixtures/${kind}.response.json`);
+  const f=await fixture({author:a});
+  assert.equal(f.dispatch('start').status,'accepted',kind);
+  assert.equal(f.dispatch('answer',{response:answer}).status,'accepted',kind);
+  const snapshot=f.engine.serialize();
+  assert(validateSnapshot(snapshot).valid,kind+' snapshot');
+  const resumed=await fixture({author:a,sourceId:uuid(20+index)});
+  resumed.engine.restore(JSON.parse(JSON.stringify(snapshot)));
+  assert.deepEqual(resumed.engine.getState(),f.engine.getState(),kind+' round trip');
+  assert.equal(resumed.events.at(-1).type,'interactive-project/activity.resumed',kind);
+  const before=resumed.engine.getState();
+  for(const mutate of [
+   value=>{value.protocolVersion='9.0.0';},
+   value=>{value.snapshotVersion='9.0.0';},
+   value=>{value.activity.activitySchemaVersion='9.0.0';},
+   value=>{value.engine.stateVersion='9.0.0';},
+   value=>{value.activity.contentDigest='0'.repeat(64);},
+   value=>{value.session.id=uuid(999);},
+   value=>{value.drivers={'fixtures/unapproved':{state:{native:true}}};}
+  ]){
+   const incompatible=clone(snapshot);mutate(incompatible);
+   assert.throws(()=>resumed.engine.restore(incompatible),error=>error.code==='quiz.snapshot',kind+' incompatible version/digest');
+   assert.deepEqual(resumed.engine.getState(),before,kind+' failed restore must be atomic');
+  }
+  f.engine.dispose();resumed.engine.dispose();
+ }
+}
+{
  const f=await fixture({policy:{timeLimitMs:10,allowUnanswered:true}});f.dispatch('start');f.setTime(109);assert.equal(f.dispatch('answer',{response}).status,'accepted');f.setTime(110);assert.equal(f.dispatch('answer',{response}).status,'rejected');assert.equal(f.dispatch('submit').status,'rejected');assert.equal(f.dispatch('timeout').status,'accepted');assert.equal(f.engine.evaluate().failure.code,'evaluation.timeout');assert(!Object.hasOwn(f.engine.evaluate(),'score'));f.engine.dispose();
 }
 {
@@ -70,4 +100,4 @@ const response=read('fixtures/single-choice.response.json');
  const loaded=await loadActivity(f.activity,{registry,catalog,engineContext:{sessionId:uuid(2),attemptId:uuid(3)},policy:{},availableDrivers:[],generated:false,validateDomainSchema:validateLearnerQuiz,validateDomainSemantics:()=>({valid:true,requirements:{permissions:[],capabilities:['interactive','evaluable']}})});
  assert(loaded.loaded,JSON.stringify(loaded));assert.equal(loaded.engine.dispatch(f.action('start')).status,'accepted');loaded.dispose();registry.dispose();f.engine.dispose();
 }
-console.log('Quiz engine: attempt actions/limits, navigation, deadlines, feedback/hints, standard events, partial resume, duplicate submit, late evaluation, secure projection and actual Core/Registry loading passed.');
+console.log('Quiz engine: attempt actions/limits, navigation, deadlines, feedback/hints, standard events, eight response-kind snapshot round trips, atomic version/digest rejection, duplicate submit, late evaluation, secure projection and actual Core/Registry loading passed.');

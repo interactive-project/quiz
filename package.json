@@ -42,7 +42,7 @@
     "./manifests/quiz-practice.v1.json": "./manifests/quiz-practice.v1.json"
   },
   "scripts": {
-    "test": "node scripts/check-conformance.mjs && node scripts/check-evaluation.mjs && node scripts/check-engine.mjs"
+    "test": "node scripts/check-conformance.mjs && node scripts/check-evaluation.mjs && node scripts/check-engine.mjs && node scripts/check-generation.mjs && node scripts/check-renderer-contract.mjs"
   },
   "peerDependencies": {
     "@interactive-project/protocol": "0.1.0",
@@ -65,8 +65,8 @@
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "typescript": "^5.9.3",
-    "@interactive-project/events": "git+https://github.com/interactive-project/events.git#ebea0bb90db349e9f83b713bfa1871113868671e",
-    "@interactive-project/registry": "git+https://github.com/interactive-project/registry.git#872c1ab6350494113e3dca16f70da60dce6e15eb",
-    "@interactive-project/core": "git+https://github.com/interactive-project/core.git#f4923be1fe252904d48ed7ea60061848b2a8c429"
+    "@interactive-project/events": "git+https://github.com/interactive-project/events.git#7251000eee1ddefafb8f760aadd8e6ca7f96dfa3",
+    "@interactive-project/registry": "git+https://github.com/interactive-project/registry.git#e6ef81f960cc4cf2ec7a83a57b617d3ed65969a2",
+    "@interactive-project/core": "git+https://github.com/interactive-project/core.git#502afd9bb2c9bea9303537c25f9a2e9d017b87f7"
   }
 }
