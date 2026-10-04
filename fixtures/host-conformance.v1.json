@@ -1,0 +1,51 @@
+{
+  "fixtureVersion": "1.0.0",
+  "activityFixture": "fixtures/single-choice.valid.json",
+  "responseFixture": "fixtures/single-choice.response.json",
+  "actionTrace": [
+    { "action": "start", "payload": {} },
+    { "action": "answer", "payloadFixture": "fixtures/single-choice.response.json" },
+    { "action": "submit", "payload": {} },
+    { "await": "evaluation" },
+    { "action": "complete", "payload": {} }
+  ],
+  "expected": {
+    "resultStatus": "completed",
+    "score": 1,
+    "eventTypes": [
+      "interactive-project/activity.created",
+      "interactive-project/activity.interacted",
+      "interactive-project/activity.started",
+      "interactive-project/attempt.started",
+      "interactive-project/activity.interacted",
+      "interactive-project/answer.changed",
+      "interactive-project/activity.interacted",
+      "interactive-project/attempt.submitted",
+      "interactive-project/answer.submitted",
+      "interactive-project/activity.interacted",
+      "interactive-project/activity.interacted",
+      "interactive-project/activity.completed"
+    ]
+  },
+  "hostAdapters": [
+    { "id": "headless", "status": "implemented" },
+    { "id": "dom", "status": "planned-separate-package" },
+    { "id": "react", "status": "planned-separate-package" },
+    { "id": "vue", "status": "planned-separate-package" },
+    { "id": "svelte", "status": "planned-separate-package" }
+  ],
+  "comparisonProjection": [
+    "result.status",
+    "result.score",
+    "ordered event type/payload/revision trace",
+    "portable Quiz state and snapshot version fields"
+  ],
+  "ignoredHostIdentityFields": [
+    "activityId",
+    "sessionId",
+    "attemptId",
+    "sourceId",
+    "event id",
+    "timestamp"
+  ]
+}

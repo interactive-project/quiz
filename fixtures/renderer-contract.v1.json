@@ -1,0 +1,23 @@
+{
+  "contractVersion": "1.0.0",
+  "hostTargets": ["headless", "dom", "react", "vue", "svelte"],
+  "localizedQuestionFixtures": [
+    "fixtures/single-choice.localized.json",
+    "fixtures/multiple-choice.localized.json",
+    "fixtures/true-false.localized.json",
+    "fixtures/numeric.localized.json",
+    "fixtures/short-answer.localized.json",
+    "fixtures/fill-blank.localized.json",
+    "fixtures/matching.localized.json",
+    "fixtures/ordering.localized.json"
+  ],
+  "requiredAccessibility": [
+    "question prompt and instructions are programmatically associated with the response group",
+    "each answer control has a localized accessible name",
+    "ordering and matching have keyboard-operable non-drag alternatives",
+    "progress, validation, submission and aggregate feedback are announced without color-only meaning",
+    "equivalent experiences and language/direction metadata are preserved"
+  ],
+  "deferredQuestionExtensions": ["formula", "essay", "oral", "hotspot"],
+  "accessibilityFixture": "fixtures/renderer-accessibility.valid.json"
+}

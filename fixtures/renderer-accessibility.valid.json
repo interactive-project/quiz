@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0.0",
+  "questions": [
+    {
+      "id": "q-labels",
+      "kind": "single-choice",
+      "prompt": {
+        "kind": "text",
+        "schemaVersion": "1.0.0",
+        "value": {
+          "kind": "localized-text",
+          "schemaVersion": "1.0.0",
+          "defaultLocale": "en",
+          "translations": {
+            "en": { "text": "Select the first option" },
+            "es": { "text": "Selecciona la primera opción" },
+            "ar": { "text": "اختر الخيار الأول", "direction": "rtl" }
+          }
+        },
+        "accessibility": {
+          "kind": "accessibility",
+          "schemaVersion": "1.0.0",
+          "label": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "en",
+            "translations": {
+              "en": { "text": "Question 1. Select the first option" },
+              "es": { "text": "Pregunta 1. Selecciona la primera opción" },
+              "ar": { "text": "السؤال ١. اختر الخيار الأول", "direction": "rtl" }
+            }
+          },
+          "instructions": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "en",
+            "translations": {
+              "en": { "text": "Choose one answer." },
+              "es": { "text": "Elige una respuesta." },
+              "ar": { "text": "اختر إجابة واحدة.", "direction": "rtl" }
+            }
+          },
+          "equivalentExperience": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "en",
+            "translations": {
+              "en": { "text": "Select an answer using the keyboard or assistive technology." },
+              "es": { "text": "Selecciona una respuesta con el teclado o tecnología de asistencia." },
+              "ar": { "text": "اختر إجابة باستخدام لوحة المفاتيح أو التقنية المساعدة.", "direction": "rtl" }
+            }
+          }
+        }
+      },
+      "options": [
+        {
+          "id": "first",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": { "text": "First" },
+                "es": { "text": "Primera" },
+                "ar": { "text": "الأول", "direction": "rtl" }
+              }
+            },
+            "accessibility": {
+              "kind": "accessibility",
+              "schemaVersion": "1.0.0",
+              "label": {
+                "kind": "localized-text",
+                "schemaVersion": "1.0.0",
+                "defaultLocale": "en",
+                "translations": {
+                  "en": { "text": "First option" },
+                  "es": { "text": "Primera opción" },
+                  "ar": { "text": "الخيار الأول", "direction": "rtl" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "second",
+          "content": {
+            "kind": "text",
+            "schemaVersion": "1.0.0",
+            "value": {
+              "kind": "localized-text",
+              "schemaVersion": "1.0.0",
+              "defaultLocale": "en",
+              "translations": {
+                "en": { "text": "Second" },
+                "es": { "text": "Segunda" },
+                "ar": { "text": "الثاني", "direction": "rtl" }
+              }
+            },
+            "accessibility": {
+              "kind": "accessibility",
+              "schemaVersion": "1.0.0",
+              "label": {
+                "kind": "localized-text",
+                "schemaVersion": "1.0.0",
+                "defaultLocale": "en",
+                "translations": {
+                  "en": { "text": "Second option" },
+                  "es": { "text": "Segunda opción" },
+                  "ar": { "text": "الخيار الثاني", "direction": "rtl" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "solutions": {
+    "q-labels": { "kind": "single-choice", "answer": "first" }
+  }
+}
